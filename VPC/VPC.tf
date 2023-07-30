@@ -72,3 +72,11 @@ resource "aws_route_table" "private-rt" {
     Name = "automated-private-rt"
   }
 }
+resource "aws_route_table_association" "public-table-association" {
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.public-rt.id
+}
+resource "aws_route_table_association" "private-table-association" {
+  subnet_id      = aws_subnet.private.id
+  route_table_id = aws_route_table.private-rt.id
+}
