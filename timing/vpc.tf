@@ -3,7 +3,7 @@
   instance_tenancy = "default"
 
   tags = {
-    Name = "automated-vpc"
+    Name = "timing-automated-vpc"
   }
 }
 resource "aws_subnet" "public" {
@@ -11,22 +11,22 @@ resource "aws_subnet" "public" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    Name = "public-subnet-automated-vpc"
+    Name = "timing-public-subnet-automated-vpc"
   }
 }
-resource "aws_subnet" "private" {
+resource "aws_subnet" "timing-private" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.2.0/24"
 
   tags = {
-    Name = "private-subnet-automated-vpc"
+    Name = "timing-private-subnet-automated-vpc"
   }
 }
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "automated-igw"
+    Name = "timing-automated-igw"
   }
 }
 resource "aws_route_table" "public-rt" {
@@ -40,7 +40,7 @@ resource "aws_route_table" "public-rt" {
 
 
   tags = {
-    Name = "automated-public-rt"
+    Name = "timing-automated-public-rt"
   }
 }
 resource "aws_eip" "auto-eip" {
@@ -51,7 +51,7 @@ resource "aws_nat_gateway" "nat" {
   subnet_id     = aws_subnet.private.id
 
   tags = {
-    Name = "automated-NAT"
+    Name = "timing-automated-NAT"
   }
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
@@ -69,7 +69,7 @@ resource "aws_route_table" "private-rt" {
 
 
   tags = {
-    Name = "automated-private-rt"
+    Name = "timing-automated-private-rt"
   }
 }
 resource "aws_route_table_association" "public-table-association" {
