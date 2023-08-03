@@ -6,7 +6,7 @@ terraform {
     }
   }
     backend "s3" {
-      bucket = "timing-remote-state"
+      bucket = "timing-local"
       key    = "timing"
       region = "us-east-1"
       dynamodb_table ="timing-lock"
